@@ -4,7 +4,7 @@ require_relative "lib/omniauth/osm/oauth2/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "omniauth-osm-oauth2"
-  spec.version       = Omniauth::Osm::Oauth2::VERSION
+  spec.version       = Omniauth::OsmOauth2::VERSION
   spec.authors       = ["KURASAWA Nozomu"]
   spec.email         = ["nabetaro@caldron.jp"]
 
