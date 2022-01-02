@@ -1,8 +1,10 @@
-# Omniauth::Osm::Oauth2
+# OmniAuth OpenStreetMap strategy via OAuth2
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/omniauth/osm/oauth2`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem contains the OpenStreetMap OAuth2 strategy for OmniAuth.
 
-TODO: Delete this and the text above, and describe your gem
+OpenStreetMap recommends the OAuth2 flow. see: https://wiki.openstreetmap.org/wiki/OAuth
+
+Originally developed by omniauth-osm (https://github.com/sozialhelden/omniauth-osm)
 
 ## Installation
 
@@ -16,13 +18,25 @@ And then execute:
 
     $ bundle install
 
-Or install it yourself as:
-
-    $ gem install omniauth-osm-oauth2
 
 ## Usage
 
+`OmniAuth::Strategies::OsmOauth2` is simply a Rack middleware. Read the OmniAuth docs for detailed instructions: https://github.com/omniauth/omniauth.
+
+Here's a quick example, adding the middleware to a Rails app in `config/initializers/omniauth.rb`:
+
+```ruby
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :osn_oauth2, ENV['OSM_APP_ID'], ENV['OSM_APP_SECRET']
+end
+```
+
+
+## Configuring
+
 TODO: Write usage instructions here
+
+
 
 ## Development
 
