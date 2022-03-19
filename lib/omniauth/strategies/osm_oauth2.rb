@@ -53,8 +53,8 @@ module OmniAuth
 
     private
 
+      # extract /api/0.6/user/details
       def parse_details(xml_data)
-        # extract event information
         doc = REXML::Document.new(xml_data)
         user = doc.elements['//user']
         home = doc.elements['//home']
@@ -76,8 +76,8 @@ module OmniAuth
         basic_attributes
       end
 
+      # extract /api/0.6/permissions
       def parse_permissions(xml_data)
-        # extract event information
         doc = REXML::Document.new(xml_data)
         doc.get_elements('//permission').map { |p| p.attribute('name').value }
       end

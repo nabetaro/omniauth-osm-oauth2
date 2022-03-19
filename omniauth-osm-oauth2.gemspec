@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'lib/omniauth/osm_oauth2/version'
+require_relative 'lib/omniauth/osm_oauth2'
 
 Gem::Specification.new do |spec|
   spec.name          = 'omniauth-osm-oauth2'
