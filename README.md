@@ -27,7 +27,7 @@ Here's a quick example, adding the middleware to a Rails app in `config/initiali
 
 ```ruby
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :osn_oauth2, ENV['OSM_APP_ID'], ENV['OSM_APP_SECRET']
+  provider :osm_oauth2, ENV['OSM_APP_ID'], ENV['OSM_APP_SECRET']
 end
 ```
 
