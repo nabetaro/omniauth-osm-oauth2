@@ -18,6 +18,7 @@ And then execute:
 
     $ bundle install
 
+If you don't have an OpenStreetMap logo handy you may wish to drop `openstreetmap.svg` into your asset pipeline. 
 
 ## Usage
 
