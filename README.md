@@ -32,6 +32,22 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 end
 ```
 
+## Upgrading from OAuth1
+
+Since July 2024, [OSM dropped OAuth 1 support](https://wiki.openstreetmap.org/wiki/2024_authentication_update). So the [omniauth-osm](https://github.com/sozialhelden/omniauth-osm) gem is no longer usable and apps using it need to migrate to this gem.
+
+OAuth2 requires redirect_uri to start with https. This impacts local development - there is [puma-dev](https://github.com/puma/puma-dev) gem with SSL support out-of-the-box, alternatively puma can be setup with [self-signed certificate](https://joshfrankel.me/blog/configure-puma-ssl-for-local-development-on-ubuntu/).
+
+List of required changes (may be app-specific):
+* Gemfile: `gem 'omniauth-osm'` -> `gem 'omniauth-osm-oauth2'`
+* config/initializers/devise.rb: `config.omniauth :osm` -> `config.omniauth :osm_oauth2`
+* app/controllers/omniauth_callbacks_controller.rb: `def osm` -> `def osm_oauth2`
+* app/models/user.rb: `:omniauth_providers => [:osm]` -> `:omniauth_providers => [:osm_oauth2]`
+
+Then the following needs to be run (otherwise a new user would be created when signing in):
+```rb
+User.where(provider: :osm).update_all(provider: :osm_oauth2)
+```
 
 ## Configuring
 
